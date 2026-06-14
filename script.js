@@ -1083,20 +1083,6 @@ function highlightTargets(targets) {
     });
   });
 
-  const box = getObjectsBox(targets);
-  const center = box ? box.getCenter(new THREE.Vector3()) : null;
-  if (center && three.focusRing) {
-    three.focusRing.position.copy(center);
-    three.focusRing.visible = true;
-  }
-  if (center && three.highlight) {
-    three.highlight.position.copy(center);
-    three.highlight.visible = true;
-  }
-  if (box && three.selectionBox) {
-    three.selectionBox.box.copy(box);
-    three.selectionBox.visible = true;
-  }
 }
 
 function resetHighlights() {
@@ -1172,11 +1158,7 @@ function updateCameraTween() {
 }
 
 function updateFocusPulse() {
-  if (!three.highlight?.visible || !three.focusRing?.visible || !three.camera) return;
-  const pulse = 1 + Math.sin(performance.now() * 0.008) * 0.14;
-  three.highlight.scale.setScalar(pulse);
-  three.focusRing.scale.setScalar(pulse);
-  three.focusRing.lookAt(three.camera.position);
+  return;
 }
 
 function bindCompositionPanel() {
@@ -1219,7 +1201,7 @@ function applyCurrentViewState() {
       offsetObjects(coverObjects, new THREE.Vector3(0, 0.72, 0.12));
     }
     if (state.manualBoardLifted) {
-      offsetObjects(pcbObjects, new THREE.Vector3(0, 1.08, 0.34));
+      offsetObjects(pcbObjects, new THREE.Vector3(0, 0.62, 0.18));
     }
 
     if (state.activeComponent) {
