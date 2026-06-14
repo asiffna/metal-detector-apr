@@ -1,9 +1,9 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
-import { IETR_DATA } from "./data.js?v=12";
+import { IETR_DATA } from "./data.js?v=13";
 
-const MODEL_URL = "assets/metal_detector_named.glb?v=12";
+const MODEL_URL = "assets/metal_detector_named.glb?v=13";
 const MARKER_TARGETS = {
   case: ["case", "case-1"],
   grille: ["eBom-prt36", "eBom-prt36-1"],
@@ -11,6 +11,11 @@ const MARKER_TARGETS = {
   gland: ["eBom-prt36", "eBom-prt36-1"],
   coilCable: ["eBom-prt36", "eBom-prt36-1"],
   pcb: ["pcb"],
+  resistors: ["R1", "R2", "R3", "R4", "R5", "R6", "R7", "R8", "R9", "R10", "R11", "R12", "R13", "R14", "R15", "R16", "R17", "R18", "R19", "R20", "R21", "R22"],
+  capacitors: ["C1", "C2", "C3", "C4", "C5", "C6", "C7", "C8", "C9", "C10", "C11", "C12", "C13", "C14"],
+  diodes: ["D1", "D2", "D3"],
+  transistors: ["VT1", "VT2", "VT3", "VT4", "VT5", "VT6"],
+  connectors: ["XP1", "V1", "LS1", "RV1"],
   fasteners: ["pcb", "case", "case-1"],
   v1: ["V1"],
   xp1: ["XP1"],
@@ -1026,7 +1031,10 @@ function getObjectsCenter(objects) {
 function selectComponent(componentId) {
   state.activeComponent = componentId;
   state.manualCoverOpen = true;
-  if (componentId === "pcb" || ["xp1", "v1", "rv1", "ls1", "r22"].includes(componentId)) {
+  if (
+    componentId === "pcb" ||
+    ["xp1", "v1", "rv1", "ls1", "r22", "resistors", "capacitors", "diodes", "transistors", "connectors"].includes(componentId)
+  ) {
     state.manualBoardLifted = true;
   }
   const targets = findObjectsByNames(MARKER_TARGETS[componentId] || []);
