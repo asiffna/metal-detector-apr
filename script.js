@@ -568,7 +568,7 @@ function animateStepObjects(step) {
     step.stage === "board";
 
   if (coverObjects.length && shouldOpenCover) {
-    offsetObjects(coverObjects, new THREE.Vector3(1.02, 0.34, 0));
+    offsetObjects(coverObjects, new THREE.Vector3(0, 0.34, 1.5));
   }
 
   if (pcbObjects.length && shouldLiftBoard) {
@@ -1206,7 +1206,7 @@ function applyCurrentViewState() {
     const pcbObjects = findObjectsByNames(["pcb"]);
 
     if (state.manualCoverOpen) {
-      offsetObjects(coverObjects, new THREE.Vector3(1.02, 0.34, 0));
+      offsetObjects(coverObjects, new THREE.Vector3(0, 0.34, 1.5));
     }
     if (state.manualBoardLifted) {
       offsetObjects(pcbObjects, new THREE.Vector3(0, 0.62, 0.18));
