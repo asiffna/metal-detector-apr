@@ -216,7 +216,7 @@ export const IETR_DATA = {
       control: "Номиналы и маркировка соответствуют схеме; выводы сформованы без механического напряжения.",
       warning: "Не перегревать выводы при пайке.",
       zone: "r22",
-      camera: "controls"
+      camera: "top"
     },
     {
       stage: "board",
@@ -228,7 +228,7 @@ export const IETR_DATA = {
       control: "Корпуса не касаются соседних выводов, полярные элементы ориентированы правильно.",
       warning: "Переполюсовка электролитических конденсаторов недопустима.",
       zone: "pcb",
-      camera: "controls"
+      camera: "top"
     },
     {
       stage: "board",
@@ -240,7 +240,7 @@ export const IETR_DATA = {
       control: "Полоска корпуса диода соответствует обозначению на плате.",
       warning: "Ошибка ориентации диода нарушит работу схемы защиты и генератора.",
       zone: "pcb",
-      camera: "controls"
+      camera: "top"
     },
     {
       stage: "board",
@@ -252,7 +252,7 @@ export const IETR_DATA = {
       control: "Корпуса установлены без перекоса, выводы не замкнуты припоем.",
       warning: "Неверная цоколевка приведет к отказу генераторов и выходного каскада.",
       zone: "pcb",
-      camera: "controls"
+      camera: "top"
     },
     {
       stage: "board",
@@ -264,7 +264,7 @@ export const IETR_DATA = {
       control: "Разъемы зафиксированы ровно, RV1 доступен для настройки нулевых биений.",
       warning: "Перекос разъема затруднит подключение и может повредить пайку.",
       zone: "rv1",
-      camera: "controls"
+      camera: "top"
     },
     {
       stage: "board",
