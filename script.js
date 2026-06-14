@@ -1,9 +1,9 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
-import { IETR_DATA } from "./data.js?v=13";
+import { IETR_DATA } from "./data.js?v=14";
 
-const MODEL_URL = "assets/metal_detector_named.glb?v=13";
+const MODEL_URL = "assets/metal_detector_named.glb?v=14";
 const MARKER_TARGETS = {
   case: ["case", "case-1"],
   grille: ["eBom-prt36", "eBom-prt36-1"],
