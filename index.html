@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ИЭТР | Металлоискатель на принципе биения</title>
+    <link rel="stylesheet" href="style.css?v=11" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand-block">
+          <span class="doc-code">МИЭМ.469435.002</span>
+          <h1>Металлоискатель на принципе биения</h1>
+          <p>Интерактивное электронное техническое руководство</p>
+        </div>
+        <div class="status-strip" aria-label="Ключевые параметры">
+          <span>9 В</span>
+          <span>100 кГц</span>
+          <span>15-20 мА</span>
+          <span>IP54*</span>
+        </div>
+      </header>
+
+      <div class="workspace">
+        <aside class="nav-panel" aria-label="Разделы ИЭТР">
+          <div class="nav-title">Разделы</div>
+          <nav id="sectionNav" class="section-nav"></nav>
+        </aside>
+
+        <main class="viewer-panel">
+          <div class="viewer-head">
+            <div>
+              <span class="eyebrow" id="activeMode">Паспорт изделия</span>
+              <h2 id="viewerTitle">3D-макет изделия</h2>
+            </div>
+            <div class="viewer-actions">
+              <button id="resetViewBtn" class="tool-button" type="button" title="Сбросить вид">Сброс вида</button>
+              <button id="toggleRotateBtn" class="tool-button" type="button" title="Переключить вращение">Вращение</button>
+              <button id="toggleCoverBtn" class="tool-button" type="button" title="Открыть или закрыть крышку">Открыть крышку</button>
+              <button id="toggleBoardBtn" class="tool-button" type="button" title="Извлечь или вернуть плату">Достать плату</button>
+            </div>
+          </div>
+
+          <section id="viewer" class="viewer" aria-label="3D-модель металлоискателя">
+            <div id="modelState" class="model-state">Загрузка 3D-модели...</div>
+            <div id="markerLayer" class="marker-layer"></div>
+          </section>
+
+          <section id="procedureControls" class="procedure-controls" aria-label="Управление процедурой">
+            <div class="progress-meta">
+              <span id="stepCounter">Шаг 1 / 14</span>
+              <span id="stepZone">Корпус</span>
+            </div>
+            <div class="progress-track">
+              <div id="progressFill" class="progress-fill"></div>
+            </div>
+            <div class="step-actions">
+              <button id="prevStepBtn" type="button">Назад</button>
+              <button id="nextStepBtn" type="button">Далее</button>
+              <button id="autoPlayBtn" type="button">Автопроигрывание</button>
+              <button id="resetStepBtn" type="button">Сброс</button>
+            </div>
+          </section>
+        </main>
+
+        <aside class="info-panel" aria-live="polite">
+          <div id="infoContent" class="info-content"></div>
+        </aside>
+      </div>
+    </div>
+
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+        }
+      }
+    </script>
+    <script type="module" src="script.js?v=11"></script>
+  </body>
+</html>
