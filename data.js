@@ -187,7 +187,7 @@ export const IETR_DATA = {
   cameraPresets: {
     overview: { position: [4.2, 3.0, 5.2], target: [0, 0, 0] },
     front: { position: [0.2, 2.0, 6.2], target: [0, 0, 0] },
-    top: { position: [0, 6.4, 1.2], target: [0, 0, 0] },
+    top: { position: [0, 6.4, 0.001], target: [0, 0, 0] },
     inside: { position: [2.4, 3.8, 3.2], target: [0, 0, 0] },
     cable: { position: [5.6, 2.2, 1.8], target: [0.9, -0.1, 0] },
     controls: { position: [-3.4, 3.4, 4.4], target: [-0.2, 0, 0] }
@@ -360,7 +360,7 @@ export const IETR_DATA = {
       control: "Разъем V1 зафиксирован, кабель не создает натяжения на плате.",
       warning: "При обрыве или нарушении изоляции катушки возможны ложные срабатывания.",
       zone: "v1",
-      camera: "controls"
+      camera: "top"
     },
     {
       stage: "product",
@@ -372,7 +372,7 @@ export const IETR_DATA = {
       control: "Питание подано на XP1; GND не является защитным заземлением.",
       warning: "Подключение выполнять только при выключенном устройстве.",
       zone: "xp1",
-      camera: "controls"
+      camera: "top"
     },
     {
       stage: "product",
@@ -384,7 +384,7 @@ export const IETR_DATA = {
       control: "При приближении металла подключенный динамик должен формировать звуковой отклик.",
       warning: "При отсутствии звука проверить питание, LS1 и настройку RV1.",
       zone: "ls1",
-      camera: "controls"
+      camera: "top"
     },
     {
       stage: "product",
@@ -396,7 +396,7 @@ export const IETR_DATA = {
       control: "Настройка стабильна, рядом с катушкой нет металлических предметов.",
       warning: "Настройка рядом с металлом приведет к ложному рабочему режиму.",
       zone: "rv1",
-      camera: "controls"
+      camera: "top"
     },
     {
       stage: "product",
@@ -408,7 +408,7 @@ export const IETR_DATA = {
       control: "Нет запаха перегрева, потемнений и нестабильной работы после подачи питания.",
       warning: "При признаках перегрева питание отключить и заново проверить монтаж.",
       zone: "r22",
-      camera: "controls"
+      camera: "top"
     },
     {
       stage: "product",
