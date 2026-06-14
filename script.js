@@ -1,9 +1,9 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
-import { IETR_DATA } from "./data.js?v=17";
+import { IETR_DATA } from "./data.js?v=18";
 
-const MODEL_URL = "assets/metal_detector_named.glb?v=17";
+const MODEL_URL = "assets/metal_detector_named.glb?v=18";
 const MARKER_TARGETS = {
   case: ["case", "case-1"],
   grille: ["eBom-prt36", "eBom-prt36-1"],
@@ -568,7 +568,7 @@ function animateStepObjects(step) {
     step.stage === "board";
 
   if (coverObjects.length && shouldOpenCover) {
-    offsetObjects(coverObjects, new THREE.Vector3(-1.02, 0.34, 0));
+    offsetObjects(coverObjects, new THREE.Vector3(1.02, 0.34, 0));
   }
 
   if (pcbObjects.length && shouldLiftBoard) {
@@ -1206,7 +1206,7 @@ function applyCurrentViewState() {
     const pcbObjects = findObjectsByNames(["pcb"]);
 
     if (state.manualCoverOpen) {
-      offsetObjects(coverObjects, new THREE.Vector3(-1.02, 0.34, 0));
+      offsetObjects(coverObjects, new THREE.Vector3(1.02, 0.34, 0));
     }
     if (state.manualBoardLifted) {
       offsetObjects(pcbObjects, new THREE.Vector3(0, 0.62, 0.18));
