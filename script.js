@@ -1,9 +1,9 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
-import { IETR_DATA } from "./data.js?v=26";
+import { IETR_DATA } from "./data.js?v=27";
 
-const MODEL_URL = "assets/new_sborka.glb?v=26";
+const MODEL_URL = "assets/new_sborka.glb?v=27";
 const MARKER_TARGETS = {
   case: ["case", "case-1"],
   grille: ["case", "case-1"],
@@ -583,7 +583,7 @@ function animateStepObjects(step) {
     offsetObjects(pcbScrews, new THREE.Vector3(0, 0.62, 0.18));
   }
 
-  if (step.animation === "pcb" && pcbObjects.length) {
+  if (step.animation === "pcb" && step.stage === "board" && pcbObjects.length) {
     offsetObjects(pcbObjects, new THREE.Vector3(0, 0.08, 0));
   }
 
@@ -1214,13 +1214,17 @@ function applyCurrentViewState() {
 
   if (state.activeSection === "composition") {
     const coverObjects = findObjectsByNames(["cover", "cover-1"]);
+    const coverScrews = findObjectsByNames(["screw_lid"]);
     const pcbObjects = findObjectsByNames(["pcb"]);
+    const pcbScrews = findObjectsByNames(["screw_pcb"]);
 
     if (state.manualCoverOpen) {
       offsetObjects(coverObjects, new THREE.Vector3(0, 0.34, -1.5));
+      offsetObjects(coverScrews, new THREE.Vector3(0, 0.34, -1.5));
     }
     if (state.manualBoardLifted) {
       offsetObjects(pcbObjects, new THREE.Vector3(0, 0.62, 0.18));
+      offsetObjects(pcbScrews, new THREE.Vector3(0, 0.62, 0.18));
     }
 
     if (state.activeComponent) {

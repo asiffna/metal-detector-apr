@@ -300,7 +300,7 @@
       control: "Ячейка не более 1 мм; нет свободного доступа к плате через окно.",
       warning: "Не добавлять отдельный шаг установки решетки.",
       zone: "grille",
-      camera: "front"
+      camera: "cable"
     },
     {
       stage: "product",
@@ -312,7 +312,7 @@
       control: "Периметр мембраны должен быть герметизирован.",
       warning: "При поврежденной мембране эксплуатация запрещена.",
       zone: "membrane",
-      camera: "front"
+      camera: "cable"
     },
     {
       stage: "product",
