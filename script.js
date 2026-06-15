@@ -1,13 +1,13 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
-import { IETR_DATA } from "./data.js?v=27";
+import { IETR_DATA } from "./data.js?v=28";
 
-const MODEL_URL = "assets/new_sborka.glb?v=27";
+const MODEL_URL = "assets/new_sborka.glb?v=28";
 const MARKER_TARGETS = {
   case: ["case", "case-1"],
-  grille: ["case", "case-1"],
-  membrane: ["case", "case-1"],
+  grille: ["coilCable", "coilCable-1"],
+  membrane: ["coilCable", "coilCable-1"],
   gland: ["coilCable", "coilCable-1"],
   coilCable: ["coilCable", "coilCable-1"],
   pcb: ["pcb"],
