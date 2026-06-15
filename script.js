@@ -1,9 +1,9 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
-import { IETR_DATA } from "./data.js?v=24";
+import { IETR_DATA } from "./data.js?v=25";
 
-const MODEL_URL = "assets/metal_detector_named.glb?v=24";
+const MODEL_URL = "assets/new_sborka.glb?v=25";
 const MARKER_TARGETS = {
   case: ["case", "case-1"],
   grille: ["eBom-prt36", "eBom-prt36-1"],
@@ -19,7 +19,7 @@ const MARKER_TARGETS = {
   fasteners: ["pcb", "case", "case-1"],
   v1: ["V1"],
   xp1: ["XP1"],
-  cover: ["cover", "cover-2"],
+  cover: ["cover", "cover-1"],
   rv1: ["RV1"],
   ls1: ["LS1"],
   r22: ["R22"]
@@ -542,7 +542,7 @@ function applyStepVisualization(step) {
 
 function applyStageVisibility(step) {
   showAllModelObjects();
-  const productObjects = findObjectsByNames(["case-1", "cover-2", "eBom-prt36-1"]);
+  const productObjects = findObjectsByNames(["case", "cover", "coilCable", "screw_pcb", "screw_lid"]);
   const showProductShell = step.stage !== "board";
   productObjects.forEach((object) => {
     object.visible = showProductShell;
@@ -557,8 +557,10 @@ function showAllModelObjects() {
 }
 
 function animateStepObjects(step) {
-  const coverObjects = findObjectsByNames(["cover", "cover-2"]);
+  const coverObjects = findObjectsByNames(["cover", "cover-1"]);
+  const coverScrews = findObjectsByNames(["screw_lid"]);
   const pcbObjects = findObjectsByNames(["pcb"]);
+  const pcbScrews = findObjectsByNames(["screw_pcb"]);
   const installBoardIndex = IETR_DATA.assemblySteps.findIndex((item) => item.stage === "product" && item.animation === "pcb");
   const coverIndex = IETR_DATA.assemblySteps.findIndex((item) => item.animation === "cover");
   const shouldLiftBoard =
@@ -570,9 +572,15 @@ function animateStepObjects(step) {
   if (coverObjects.length && shouldOpenCover) {
     offsetObjects(coverObjects, new THREE.Vector3(0, 0.34, -1.5));
   }
+  if (coverScrews.length && shouldOpenCover) {
+    offsetObjects(coverScrews, new THREE.Vector3(0, 0.34, -1.5));
+  }
 
   if (pcbObjects.length && shouldLiftBoard) {
     offsetObjects(pcbObjects, new THREE.Vector3(0, 0.62, 0.18));
+  }
+  if (pcbScrews.length && shouldLiftBoard) {
+    offsetObjects(pcbScrews, new THREE.Vector3(0, 0.62, 0.18));
   }
 
   if (step.animation === "pcb" && pcbObjects.length) {
@@ -581,6 +589,9 @@ function animateStepObjects(step) {
 
   if (step.animation === "cover" && coverObjects.length) {
     offsetObjects(coverObjects, new THREE.Vector3(0, 0.06, 0));
+  }
+  if (step.animation === "cover" && coverScrews.length) {
+    offsetObjects(coverScrews, new THREE.Vector3(0, 0.06, 0));
   }
 }
 

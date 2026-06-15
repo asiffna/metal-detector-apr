@@ -341,7 +341,7 @@ export const IETR_DATA = {
     {
       stage: "product",
       title: "Установка платы в корпус",
-      targetNames: ["pcb"],
+      targetNames: ["pcb", "screw_pcb"],
       animation: "pcb",
       action: "Установить собранную плату FR-4 в корпус.",
       details: "Размер платы 112,15 x 50,08 x 1,61 мм; перед окончательной фиксацией проверить посадочные места.",
@@ -413,7 +413,7 @@ export const IETR_DATA = {
     {
       stage: "product",
       title: "Закрытие крышки",
-      targetNames: ["cover", "cover-2"],
+      targetNames: ["cover", "cover-1", "screw_lid"],
       animation: "cover",
       action: "Закрыть крышку корпуса и проверить фиксацию в пазах.",
       details: "Крышка крепится выступами и перекрывает доступ пользователя к проводникам платы.",
