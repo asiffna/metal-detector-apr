@@ -1,15 +1,15 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
-import { IETR_DATA } from "./data.js?v=25";
+import { IETR_DATA } from "./data.js?v=26";
 
-const MODEL_URL = "assets/new_sborka.glb?v=25";
+const MODEL_URL = "assets/new_sborka.glb?v=26";
 const MARKER_TARGETS = {
   case: ["case", "case-1"],
-  grille: ["eBom-prt36", "eBom-prt36-1"],
-  membrane: ["eBom-prt36", "eBom-prt36-1"],
-  gland: ["eBom-prt36", "eBom-prt36-1"],
-  coilCable: ["eBom-prt36", "eBom-prt36-1"],
+  grille: ["case", "case-1"],
+  membrane: ["case", "case-1"],
+  gland: ["coilCable", "coilCable-1"],
+  coilCable: ["coilCable", "coilCable-1"],
   pcb: ["pcb"],
   resistors: ["R1", "R2", "R3", "R4", "R5", "R6", "R7", "R8", "R9", "R10", "R11", "R12", "R13", "R14", "R15", "R16", "R17", "R18", "R19", "R20", "R21", "R22"],
   capacitors: ["C1", "C2", "C3", "C4", "C5", "C6", "C7", "C8", "C9", "C10", "C11", "C12", "C13", "C14"],
@@ -664,7 +664,7 @@ function findSelectableAncestor(object) {
     const parentName = node.parent?.name || "";
 
     if (parentName === "pcb") return name.startsWith("Layer_") ? node.parent : node;
-    if (["pcb", "case-1", "cover-2", "eBom-prt36-1"].includes(name)) return node;
+    if (["pcb", "case-1", "cover-1", "coilCable-1"].includes(name)) return node;
     if (/^(R|C|D|VT)\d+$/i.test(name) || ["XP1", "V1", "RV1", "LS1"].includes(name)) return node;
 
     node = node.parent;
@@ -771,12 +771,12 @@ function describeModelObject(name) {
       description: "Основная корпусная деталь блока управления со встроенной защитной решеткой.",
       control: "Корпус должен быть без трещин, сколов и острых кромок."
     },
-    "cover-2": {
+    "cover-1": {
       title: "Крышка корпуса",
       description: "Закрывает корпус и ограничивает доступ пользователя к проводникам платы.",
       control: "После закрытия не должно быть зазора между крышкой и корпусом."
     },
-    "eBom-prt36-1": {
+    "coilCable-1": {
       title: "Зона решетки и вывода кабеля",
       description: "Общий CAD-узел, где представлены защитная решетка и зона вывода кабеля.",
       control: "Проверить решетку, мембрану, кабельный ввод и отсутствие повреждений кабеля."
@@ -931,7 +931,7 @@ function normalizeObjectName(name) {
 }
 
 function collectKeyObjects() {
-  const keys = ["pcb", "cover", "case", "XP1", "V1", "RV1", "LS1", "R22", "eBom-prt36"];
+  const keys = ["pcb", "cover", "case", "coilCable", "XP1", "V1", "RV1", "LS1", "R22", "screw_pcb", "screw_lid"];
   return Object.fromEntries(keys.map((key) => [key, findObjectsByNames([key]).map((item) => item.name)]));
 }
 
@@ -1213,7 +1213,7 @@ function applyCurrentViewState() {
   showAllModelObjects();
 
   if (state.activeSection === "composition") {
-    const coverObjects = findObjectsByNames(["cover", "cover-2"]);
+    const coverObjects = findObjectsByNames(["cover", "cover-1"]);
     const pcbObjects = findObjectsByNames(["pcb"]);
 
     if (state.manualCoverOpen) {
